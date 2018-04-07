@@ -11,6 +11,7 @@ export default class App extends Component {
   constructor(props){
     super();
     this.state = {
+      buttonDis: false,
       solution: true,
       positionSet: props.positionSet,
       pathArray: []
@@ -50,7 +51,7 @@ export default class App extends Component {
  handleResolve = () =>{
    let result = resolve();
    if(result === false){
-     this.setState({solution: false});
+     this.setState({solution: false, buttonDis: true});
    }else{
      let { positionSet } = this.props;
      let start = [];
@@ -74,13 +75,13 @@ export default class App extends Component {
          pathArray.push([pathArray[index][0] - 1, pathArray[index][1]]);
        }
      });
-     this.setState({pathArray})
+     this.setState({pathArray, buttonDis: true})
    }
  }
 
  handleClear = () => {
    clearGrid();
-   this.setState({solution: true, pathArray: []});
+   this.setState({solution: true, pathArray: [], buttonDis: false});
  }
 
  render(){
@@ -111,7 +112,7 @@ export default class App extends Component {
           <span>Drag and Drop items to grid.</span>
         </div>
         <div>
-          <button onClick={this.handleResolve}>Resolve</button>
+          <button onClick={this.handleResolve} disabled={this.state.buttonDis}>Resolve</button>
           <button onClick={this.handleClear}>Clear Grid</button>
         </div>
         <div style={{textAlign: 'center'}}>
