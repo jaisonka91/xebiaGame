@@ -3,6 +3,7 @@ import { findDOMNode } from 'react-dom';
 import { move, canMove } from '../functions/game';
 import { ItemTypes } from '../functions/constants';
 import { DropTarget } from 'react-dnd';
+import SquareComponent from './squareComponent';
 
 const squareTarget = {
   drop(props, monitor, component) {
@@ -27,8 +28,10 @@ export default class Square extends Component {
 
     const { connectDropTarget, isOver, fill } = this.props;
     return connectDropTarget(
-      <div className="square" style={{background: fill?'#2ecc71':'#fff'}}>
-        {this.props.children}
+      <div style={{height: '100%', width: '100%'}}>
+        <SquareComponent fill={fill}>
+          {this.props.children}
+        </SquareComponent>
       </div>
     )
   }

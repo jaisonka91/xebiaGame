@@ -112,7 +112,7 @@ export default class App extends Component {
           <span>Drag and Drop items to grid.</span>
         </div>
         <div>
-          <button onClick={this.handleResolve} disabled={this.state.buttonDis}>Resolve</button>
+          <button onClick={this.handleResolve} disabled={this.state.buttonDis} className="buttonClick">Resolve</button>
           <button onClick={this.handleClear}>Clear Grid</button>
         </div>
         <div style={{textAlign: 'center'}}>

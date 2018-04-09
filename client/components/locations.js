@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ItemTypes } from '../functions/constants';
 import { DragSource } from 'react-dnd';
+import LocationComponent from './locationComponent';
 
 const locationSource = {
   beginDrag(props) {
@@ -25,8 +26,8 @@ export default class Location extends Component {
       return null;
     }
     return connectDragSource(
-      <div className="locations">
-        {text}
+      <div>
+        <LocationComponent text={text}/>
       </div>
     )
   }
